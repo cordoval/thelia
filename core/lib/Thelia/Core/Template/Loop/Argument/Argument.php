@@ -58,8 +58,6 @@ class Argument
 
     public function setValue($value)
     {
-        $x = $value === null;
-
         if ($value === null) {
             $this->value = null;
         } else {

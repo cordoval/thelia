@@ -188,7 +188,7 @@ abstract class BaseLoop
                 $faultDetails[] = sprintf('Invalid value "%s" for "%s" argument in loop type: %s, name: %s', $value, $argument->name, $loopType, $loopName);
             } else {
                 /* set default */
-                /* did it as last checking for we consider default value is acceptable no matter type or empty restriction */
+                /* process it as last checking for we consider default value is acceptable no matter type or empty restriction */
                 if ($value === null) {
                     $value = $argument->default;
                 }

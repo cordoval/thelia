@@ -55,6 +55,10 @@ abstract class BaseLoopTestor extends \PHPUnit_Framework_TestCase
         return $method;
     }
 
+    /**
+     * base setup method
+     * You can define a moreSetUp method to add anything in the setup
+     */
     public function setUp()
     {
         $this->container = new ContainerBuilder();
@@ -108,6 +112,10 @@ abstract class BaseLoopTestor extends \PHPUnit_Framework_TestCase
         $this->container->set('thelia.securityContext', new SecurityContext($request));
         $this->container->set('router.admin', $stubRouterAdmin);
         $this->container->set('thelia.url.manager', new URL($this->container));
+
+        if(method_exists($this, 'moreSetUp')) {
+            $this->moreSetUp();
+        }
 
         $this->instance = $this->getTestedInstance();
         $this->instance->initializeArgs($this->getMandatoryArguments());

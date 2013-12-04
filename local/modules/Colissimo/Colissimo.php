@@ -117,7 +117,13 @@ class Colissimo extends BaseModule implements DeliveryModuleInterface
      */
     public function getPostage(Country $country)
     {
-        $cartWeight = $this->getContainer()->get('request')->getSession()->getCart()->getWeight();
+        $cart = $this->getContainer()->get('request')->getSession()->getCart();
+        if(null === $cart) {
+            /* no cart context yet */
+            $cartWeight = 0;
+        } else {
+            $cartWeight = $cart->getWeight();
+        }
 
         $postage = self::getPostageAmount(
             $country->getAreaId(),
