@@ -41,6 +41,7 @@ use Thelia\Model\CurrencyQuery;
 use Thelia\Model\Map\ProductPriceTableMap;
 use Thelia\Model\Map\ProductSaleElementsTableMap;
 use Thelia\Model\Map\ProductTableMap;
+use Thelia\Model\ProductCategoryQuery;
 use Thelia\Model\ProductQuery;
 use Thelia\TaxEngine\TaxEngine;
 use Thelia\Type\TypeCollection;
@@ -340,7 +341,7 @@ class Product extends BaseI18nLoop implements PropelSearchLoopInterface, SearchL
 
         if ($current_category === true) {
             $search->filterByCategory(
-                CategoryQuery::create()->filterByProduct(
+                CategoryQuery::create()->filterByProductCategory(
                     ProductCategoryQuery::create()->filterByProductId(
                         $this->request->get("product_id"),
                         Criteria::EQUAL
@@ -351,7 +352,7 @@ class Product extends BaseI18nLoop implements PropelSearchLoopInterface, SearchL
             );
         } elseif ($current_category === false) {
             $search->filterByCategory(
-                CategoryQuery::create()->filterByProduct(
+                CategoryQuery::create()->filterByProductCategory(
                     ProductCategoryQuery::create()->filterByProductId(
                         $this->request->get("product_id"),
                         Criteria::EQUAL
@@ -865,7 +866,7 @@ class Product extends BaseI18nLoop implements PropelSearchLoopInterface, SearchL
 
         if ($current_category === true) {
             $search->filterByCategory(
-                CategoryQuery::create()->filterByProduct(
+                CategoryQuery::create()->filterByProductCategory(
                     ProductCategoryQuery::create()->filterByProductId(
                         $this->request->get("product_id"),
                         Criteria::EQUAL
@@ -876,7 +877,7 @@ class Product extends BaseI18nLoop implements PropelSearchLoopInterface, SearchL
             );
         } elseif ($current_category === false) {
             $search->filterByCategory(
-                CategoryQuery::create()->filterByProduct(
+                CategoryQuery::create()->filterByProductCategory(
                     ProductCategoryQuery::create()->filterByProductId(
                         $this->request->get("product_id"),
                         Criteria::EQUAL
