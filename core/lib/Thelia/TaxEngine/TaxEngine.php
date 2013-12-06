@@ -48,7 +48,7 @@ class TaxEngine
             self::$instance = new TaxEngine();
         }
 
-        if(null !== self::$instance) {
+        if(null !== $session) {
             self::$instance->setSession($session);
         }
 
